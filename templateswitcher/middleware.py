@@ -13,6 +13,9 @@ class TemplateDirSwitcher(object):
     settings.
     """
     def process_request(self, request):
+        if request.path.startswith("/admin"):
+            return None
+        
         device_families = importlib.import_module(getattr(settings, 'DEVICE_FAMILIES', 'templateswitcher.device_families'))
         device_obj = getattr(request, 'device', None)
         
@@ -49,3 +52,5 @@ class TemplateDirSwitcher(object):
             settings.TEMPLATE_DIRS = (
                 settings.DEVICE_TEMPLATE_DIRS[template_set],
             )
+        
+        return None
