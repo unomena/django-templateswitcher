@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-templateswitcher',
-    version='0.0.1',
+    version='0.0.1.unomena.1',
     description='Django template switcher.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt Foundation',
@@ -11,7 +11,7 @@ setup(
     url='http://github.com/praekelt/django-templateswitcher',
     packages = find_packages(),
     dependency_links = [
-        'https://github.com/qoda/mobile.sniffer/tarball/templateswitcher#egg=mobile.sniffer',
+        'https://github.com/unomena/mobile.sniffer/tarball/master#egg=mobile.sniffer',
     ],
     install_requires = [
         'importlib',

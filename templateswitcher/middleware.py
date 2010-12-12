@@ -59,8 +59,6 @@ class TemplateDirSwitcher(object):
             
         if not media_request:
             # switch the template dir for the given device
-            settings.TEMPLATE_DIRS = (
-                settings.DEVICE_TEMPLATE_DIRS[template_set],
-            )
+            settings.TEMPLATE_DIRS = settings.DEVICE_TEMPLATE_DIRS[template_set]
         
         return None
