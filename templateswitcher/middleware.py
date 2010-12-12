@@ -52,8 +52,6 @@ class TemplateDirSwitcher(object):
             sniffer = ChainedSniffer(chained_libs)
             device_object = sniffer.sniff(request)
             template_set = device_families.get_device_family(device_object)
-            sniffer = None
-            device_object = None
                 
             # copy the device object to the request object
             request.device = device_object
