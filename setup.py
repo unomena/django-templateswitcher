@@ -15,7 +15,7 @@ setup(
     ],
     install_requires = [
         'importlib',
-        'mobile.sniffer',
+        'mobile.sniffer==0.9.3.unomena.1',
         'pyparsing',
         'python-Levenshtein',
     ],
