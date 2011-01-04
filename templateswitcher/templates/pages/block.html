@@ -1,0 +1,10 @@
+{% load markup %}
+
+{% if block %}
+    {% if block.markup == 1 %}
+        {{block.content|safe}}
+    {% endif %}
+    {% if block.markup == 2 %}
+        {{block.content|markdown}}
+    {% endif %}
+{% endif %}

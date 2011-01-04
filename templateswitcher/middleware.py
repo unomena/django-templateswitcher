@@ -1,11 +1,15 @@
-import importlib
 import os
+import importlib
 
+from django.http import Http404
 from django.conf import settings
 from django.core.cache import cache
 
+from templateswitcher.views import flatpageview
+
 from mobile.sniffer.chain import ChainedSniffer
 
+#==============================================================================
 class TemplateDirSwitcher(object):
     """
     Template Switching Middleware. Switches template dirs by using preset conditions
@@ -13,6 +17,8 @@ class TemplateDirSwitcher(object):
     object in the request object and resets the TEMPLATE_DIRS attr in the project 
     settings.
     """
+    
+    #--------------------------------------------------------------------------
     def process_request(self, request):
         if request.path.startswith("/admin"):
             return None
@@ -61,4 +67,28 @@ class TemplateDirSwitcher(object):
             # switch the template dir for the given device
             settings.TEMPLATE_DIRS = settings.DEVICE_TEMPLATE_DIRS[template_set]
         
+        request.template_set = template_set
+
         return None
+
+#==============================================================================
+class FlatpageFallbackMiddleware(object):
+    """
+    Template Switching Flatpages.   Works exactly the same as regular flatpages,
+    just template-set aware.
+    """
+    
+    #--------------------------------------------------------------------------
+    def process_response(self, request, response):
+        if response.status_code != 404:
+            return response # No need to check for a flatpage for non-404 responses.
+        try:
+            return flatpageview(request)
+        # Return the original response if any errors happened. Because this
+        # is a middleware, we can't assume the errors will be caught elsewhere.
+        except Http404:
+            return response
+        except:
+            if settings.DEBUG:
+                raise
+            return response
