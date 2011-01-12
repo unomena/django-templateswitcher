@@ -11,7 +11,7 @@ setup(
     url='http://github.com/praekelt/django-templateswitcher',
     packages = find_packages(),
     dependency_links = [
-        'https://github.com/unomena/django-ua-sniffer/tarball/master#egg=django-ua-sniffer',
+        'https://github.com/unomena/django-ua-mapper/tarball/master#egg=django-ua-mapper',
     ],
     install_requires = [
         'importlib',
