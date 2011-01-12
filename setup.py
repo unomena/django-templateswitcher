@@ -10,8 +10,13 @@ setup(
     license='BSD',
     url='http://github.com/praekelt/django-templateswitcher',
     packages = find_packages(),
-    dependency_links = [],
-    install_requires = ['importlib',],
+    dependency_links = [
+        'https://github.com/unomena/django-ua-sniffer/tarball/master#egg=django-ua-sniffer',
+    ],
+    install_requires = [
+        'importlib',
+        'django-ua-sniffer==0.0.5.unomena.1'
+    ],
     include_package_data=True,
     classifiers = [
         "Programming Language :: Python",
