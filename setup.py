@@ -10,15 +10,8 @@ setup(
     license='BSD',
     url='http://github.com/praekelt/django-templateswitcher',
     packages = find_packages(),
-    dependency_links = [
-        'https://github.com/unomena/mobile.sniffer/tarball/master#egg=mobile.sniffer',
-    ],
-    install_requires = [
-        'importlib',
-        'mobile.sniffer==0.9.3.unomena.1',
-        'pyparsing',
-        'python-Levenshtein',
-    ],
+    dependency_links = [],
+    install_requires = ['importlib',],
     include_package_data=True,
     classifiers = [
         "Programming Language :: Python",
