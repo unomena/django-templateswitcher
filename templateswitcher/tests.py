@@ -25,12 +25,12 @@ class TemplateDirSwitcherTestCase(unittest.TestCase):
         Test that the correct template set is returned.
         """
         count = 0
-        for k, v in user_agents:
+        for k, v in self.user_agents:
             client = Client()
             extras = {
                 settings.USERAGENT_HEADER_KEY: self.user_agents[k],
             }
             response = client.get('/', **extras)
             
-            self.FailUnlessEqual(settings.TEMPLATE_DIRS[0], setting.DEVICE_TEMPLATE_DIRS[count])
+            self.FailUnlessEqual(settings.TEMPLATE_DIRS[0], settings.DEVICE_TEMPLATE_DIRS[count])
             count += 1

@@ -1,5 +1,3 @@
-import os
-import importlib
 import ua_mapper
 
 from django.http import Http404
@@ -23,9 +21,6 @@ class TemplateDirSwitcher(object):
     def process_request(self, request):
         if request.path.startswith("/admin"):
             return None
-        
-        device_families = importlib.import_module(getattr(settings, 'DEVICE_FAMILIES', 'templateswitcher.device_families'))
-        device_obj = getattr(request, 'device', None)
         # Use hash as the key since UA's can be quite llong, dont want to hit memcache 250 byte limit
         device_cache_key = hash(request.META['HTTP_USER_AGENT'])
         template_set = cache.get(device_cache_key)
