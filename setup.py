@@ -14,7 +14,7 @@ setup(
         'https://github.com/unomena/django-ua-mapper/tarball/master#egg=django-ua-mapper',
     ],
     install_requires = [
-        'django-ua-mapper==0.0.5.unomena.1'
+        'django-ua-mapper==0.0.8.unomena.1'
     ],
     include_package_data=True,
     classifiers = [
