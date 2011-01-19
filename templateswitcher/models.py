@@ -16,6 +16,8 @@ class Page(models.Model):
     sub_title = models.CharField(max_length=255, blank=True, null=True, help_text='A short, descriptive sub title.')
     strapline = models.CharField(max_length=500, help_text='A very short description.', blank=True, null=True)
     content = RichTextField(help_text='The actual, formatted content.')
+    breadcrumb_url = models.CharField(max_length=255, blank=True, null=True, help_text='Breadcrumb URL')
+    breadcrumb_caption = models.CharField(max_length=255, blank=True, null=True, help_text='Breadcrumb caption')
     template = models.CharField(max_length=512, blank=True)
     template_set = models.CharField(
                         max_length=20,
