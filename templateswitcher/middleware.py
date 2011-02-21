@@ -1,4 +1,5 @@
 import ua_mapper
+from ua_mapper.mapper import UAMapper
 
 from django.http import Http404
 from django.conf import settings
@@ -31,6 +32,12 @@ class TemplateDirSwitcher(object):
         if not template_set:
             
             template_set = ua_mapper.get_template_set(request.META['HTTP_USER_AGENT'])
+            
+            if not template_set:
+                
+                mapper = UAMapper()
+                user_agent, device, template_set = mapper.map_by_request(request) 
+            
             device_cache_timeout = getattr(settings, 'DEVICE_CACHE_TIMEOUT', 72000)
             cache.set(device_cache_key, template_set, device_cache_timeout)            
             
