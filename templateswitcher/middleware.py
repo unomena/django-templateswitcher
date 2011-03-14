@@ -1,9 +1,13 @@
 import ua_mapper
 from ua_mapper.mapper import UAMapper
 
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.conf import settings
 from django.core.cache import cache
+from django.template import loader, RequestContext
+
+
+
 
 from templateswitcher.views import flatpageview
 
@@ -25,6 +29,9 @@ class TemplateDirSwitcher(object):
         # Use hash as the key since UA's can be quite llong, dont want to hit memcache 250 byte limit
         device_cache_key = hash(request.META['HTTP_USER_AGENT'])
         template_set = cache.get(device_cache_key)
+        if template_set == "unsupported":
+            return HttpResponse(loader.get_template('pages/418_service_error.html').render(RequestContext(request)))
+        
         full_path = request.get_full_path()
         media_request = (full_path.startswith(settings.MEDIA_URL) or
                         full_path.startswith(settings.ADMIN_MEDIA_PREFIX) or full_path.startswith('/favicon'))
