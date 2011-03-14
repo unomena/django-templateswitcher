@@ -67,3 +67,5 @@ def flatpageview(request, template=None):
         populate_xheaders(request, response, Page, page.id)
 
     return response
+
+
