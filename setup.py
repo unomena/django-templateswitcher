@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-templateswitcher',
-    version='0.0.1.unomena.1',
+    version='0.0.1.unomena.2',
     description='Django template switcher.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt Foundation',
