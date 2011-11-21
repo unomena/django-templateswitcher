@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-templateswitcher',
-    version='0.0.1.unomena.2',
+    version='0.0.1.unomena.3',
     description='Django template switcher.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt Foundation',
@@ -14,7 +14,7 @@ setup(
         'https://github.com/unomena/django-ua-mapper/tarball/master#egg=django-ua-mapper',
     ],
     install_requires = [
-        'django-ua-mapper==0.0.8.unomena.2'
+        'django-ua-mapper==0.0.8.unomena.3'
     ],
     include_package_data=True,
     classifiers = [
